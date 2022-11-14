@@ -1,0 +1,11 @@
+        Try
+            con = New SqlConnection(constr)
+            con.Open()
+            cmdstr = "update a1 set Name = '" & txtName.Text & "', Gender = '" & gender & "', DOB = '" & Calendar1.SelectedDate & "', Address = '" & txtAdd.Text & "', City = '" & DropDownList1.SelectedItem.Text & "', Mobile = '" & txtMob.Text & "', Email = '" & txtEmail.Text & "', Password = '" & txtPass.Text & "' where ID = '" & txtId.Text & "'"
+            cmd = New SqlCommand(cmdstr, con)
+            cmd.ExecuteNonQuery()
+            con.Close()
+            MsgBox("Update")
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString())
+        End Try

@@ -1,0 +1,17 @@
+Sub search()
+        Try
+            con = New SqlConnection(constr)
+            con.Open()
+            cmdstr = "select * from a1 where Name like '" & txtSearch.Text & "%' or ID like '" & txtSearch.Text & "%'"
+            cmd = New SqlCommand(cmdstr, con)
+            cmd.ExecuteNonQuery()
+            adp = New SqlDataAdapter(cmd)
+            ds = New DataSet
+            adp.Fill(ds, "a1")
+            GridView1.DataSource = ds.Tables("a1")
+            GridView1.DataBind()
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString())
+        End Try
+    End Sub
